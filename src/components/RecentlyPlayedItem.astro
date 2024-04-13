@@ -1,0 +1,28 @@
+---
+import CardPlayButton from "@/components/CardPlayButton";
+
+const { playlist } = Astro.props;
+const { id, cover, title, artists, color } = playlist;
+---
+
+<article
+  class="group relative hover:bg-zinc-300/20 shadow-lg hover:shadow-xl bg-zinc-800/30 rounded-md transition-all duration-300"
+>
+  <div
+    class="absolute right-2 bottom-2 shadow-lg transition-all duration-500 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 z-10"
+  >
+    <CardPlayButton size="small" id={id} client:load />
+  </div>
+
+  <a
+    href=`/playlist/${id}`
+    class="flex items-center gap-4 rounded-md overflow-hidden transition duration-300"
+  >
+    <picture class="shadow-xl">
+      <img class="w-12 h-12" src={cover} alt={title} />
+    </picture>
+    <span class="font-bold text-xs">
+      {title}
+    </span>
+  </a>
+</article>

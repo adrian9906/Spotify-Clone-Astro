@@ -1,0 +1,11 @@
+---
+import { playlists } from "@/lib/data";
+import RecentlyPlayedItem from "../components/RecentlyPlayedItem.astro";
+import GridPlaylists from "./GridPlaylists";
+---
+
+<GridPlaylists columns={3} client:load>
+  {playlists.map(playlist=> (
+    <RecentlyPlayedItem playlist={playlist} />
+  ))}
+</GridPlaylists>

@@ -1,0 +1,22 @@
+---
+import { playlists } from "@/lib/data";
+import PlayListItemCard from '../components/PlayListItemCard.astro';
+import GridPlaylists from "./GridPlaylists";
+
+const {sectionTitle} = Astro.props;
+
+const id = 1;
+---
+
+<section class="mt-10">
+  <div class="flex justify-between">
+    <h2 class="text-2xl font-bold text-white">{sectionTitle}</h2>
+    <a href={`/section/${id}`} class="text-sm text-zinc-400 font-bold hover:underline" transition:name=`section ${id} box`>Mostrar todo</a>
+  </div>
+  
+  <GridPlaylists columns={5} client:load>
+    {
+      playlists.slice(0, 5).map(playlist => <PlayListItemCard playlist={playlist} />)
+    }
+</GridPlaylists>
+</section>
