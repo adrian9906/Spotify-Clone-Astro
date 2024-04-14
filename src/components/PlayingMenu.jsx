@@ -6,8 +6,6 @@ function PlayingMenu() {
   const { currentMusic } = usePlayerStore((state) => state);
   const { song } = currentMusic;
 
-  console.log(song);
-
   if (!isOpen) return <div></div>;
 
   if (!song)

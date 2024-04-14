@@ -28,7 +28,7 @@ const TablaConBotonPlay: React.FC<Props> = ({ songs, playlist }) => {
   const { isPlaying } =
   usePlayerStore((state) => state);
   const [isBoton, setBoton] = useState<number | null>(null);
-  console.log(isBoton)
+
  return (
     <table className="table-auto text-left min-w-full divide-y divide-gray-500/20">
       <thead>

@@ -338,7 +338,6 @@ export function Player() {
       while (indexRandom === index) {
         indexRandom = Math.floor(Math.random() * (songs.length))
       }
-      console.log(indexRandom)
       nextSong = songs[indexRandom + 1];
     }else{
       nextSong = songs[index + 1]
