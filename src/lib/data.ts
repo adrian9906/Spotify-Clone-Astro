@@ -66,7 +66,7 @@ export const playlists: Playlist[] = [
     title: "Bubalu",
     color: colors.green,
     cover:
-      "/public/music/7/FeidAlbum.jpg",
+      "/music/7/FeidAlbum.jpg",
     artists: ["Feid", "Rema"],
   },
 ];
@@ -338,7 +338,7 @@ export const songs: Song[] = [
     id: 1,
     albumId: 7,
     title: "Bubalu",
-    image: `/public/music/7/FeidAlbum.jpg`,
+    image: `/music/7/FeidAlbum.jpg`,
     artists: ["Feid,Rema"],
     album: "Ferxxo",
     duration: "3:48"

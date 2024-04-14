@@ -50,14 +50,14 @@ export const Repeat = ({ classname }) => (
   </svg>
 )
 
-export const Queue = ({className}) =>(
+export const Queue = ({ className }) => (
   <svg role="img"
-  height="16"
-  width="16"
-  fill="currentColor"
-  aria-hidden="true"
-  aria-label="Cola"
-  viewBox="0 0 16 16">
+    height="16"
+    width="16"
+    fill="currentColor"
+    aria-hidden="true"
+    aria-label="Cola"
+    viewBox="0 0 16 16">
     <path d="M15 15H1v-1.5h14V15zm0-4.5H1V9h14v1.5zm-14-7A2.5 2.5 0 0 1 3.5 1h9a2.5 2.5 0 0 1 0 5h-9A2.5 2.5 0 0 1 1 3.5zm2.5-1a1 1 0 0 0 0 2h9a1 1 0 1 0 0-2h-9z"></path>
   </svg>
 )
@@ -170,7 +170,7 @@ function CurrentSong({ image, title, artists, albumId }) {
 
       <div className="flex flex-col">
         <a href={`/playlist/${albumId}`} className="hover:underline text-white">
-        <h3 className="font-semibold text-sm block ">{title}</h3>
+          <h3 className="font-semibold text-sm block ">{title}</h3>
         </a>
         <span className="text-sm opacity-80">{artists?.join(", ")}</span>
       </div>
@@ -353,7 +353,7 @@ export function Player() {
       <div className="grid place-content-center gap-4 flex-1">
         <div className="flex justify-center flex-col items-center">
           <div className="flex items-center gap-8">
-          <TooltipProvider delayDuration={300}>
+            <TooltipProvider delayDuration={300}>
               <Tooltip>
                 <TooltipTrigger>
                   <button
@@ -369,7 +369,7 @@ export function Player() {
               </Tooltip>
             </TooltipProvider>
 
-            
+
             <TooltipProvider delayDuration={300}>
               <Tooltip>
                 <TooltipTrigger>
@@ -390,14 +390,14 @@ export function Player() {
             <TooltipProvider delayDuration={300}>
               <Tooltip>
                 <TooltipTrigger>
-            <button onClick={handlePlay} className="bg-white rounded-full p-2">
-              {isPlaying ? <Pause /> : <Play />}
-            </button>
+                  <button onClick={handlePlay} className="bg-white rounded-full p-2">
+                    {isPlaying ? <Pause /> : <Play />}
+                  </button>
                 </TooltipTrigger>
                 <TooltipContent className="bg-gray-900">
-                <p>
-                {isPlaying ? 'Pause' : 'Play'}
-                </p>
+                  <p>
+                    {isPlaying ? 'Pause' : 'Play'}
+                  </p>
                 </TooltipContent>
               </Tooltip>
             </TooltipProvider>
@@ -405,12 +405,12 @@ export function Player() {
             <TooltipProvider delayDuration={300}>
               <Tooltip>
                 <TooltipTrigger>
-                <button
-              onClick={handleNext}
-              className="text-[#b3b3b3] hover:text-white"
-            >
-              <Next />
-            </button>
+                  <button
+                    onClick={handleNext}
+                    className="text-[#b3b3b3] hover:text-white"
+                  >
+                    <Next />
+                  </button>
                 </TooltipTrigger>
                 <TooltipContent className="bg-gray-900">
                   Next
@@ -422,11 +422,11 @@ export function Player() {
             <TooltipProvider delayDuration={300}>
               <Tooltip>
                 <TooltipTrigger>
-                <button
-              className="text-[#b3b3b3] hover:text-white"
-            >
-              <Repeat />
-            </button>
+                  <button
+                    className="text-[#b3b3b3] hover:text-white"
+                  >
+                    <Repeat />
+                  </button>
                 </TooltipTrigger>
                 <TooltipContent className="bg-gray-900">
                   Repeat
@@ -439,29 +439,60 @@ export function Player() {
       </div>
 
       <div className="flex gap-3 items-center justify-end">
-        <button
-          onClick={() => setIsOpen(!isOpen)}
-          className={`transition-all hover:scale-105 ${isOpen ? "text-green-500" : "text-[#b3b3b3] hover:text-white"
-            }`}
-        >
-          <span>
-            <Listening />
-          </span>
-        </button>
+        <TooltipProvider delayDuration={300}>
+          <Tooltip>
+            <TooltipTrigger>
+              <button
+                onClick={() => setIsOpen(!isOpen)}
+                className={`transition-all hover:scale-105 ${isOpen ? "text-green-500" : "text-[#b3b3b3] hover:text-white"
+                  }`}
+              >
+                <span>
+                  <Listening />
+                </span>
+              </button>
 
-        <button
-        >
-          <span>
-            <Lyrics />
-          </span>
-        </button>
+            </TooltipTrigger>
+            <TooltipContent className="bg-gray-900">
+              Listening
+            </TooltipContent>
+          </Tooltip>
+        </TooltipProvider>
 
-        <button
-        >
-          <span>
-            <Queue />
-          </span>
-        </button>
+        <TooltipProvider delayDuration={300}>
+          <Tooltip>
+            <TooltipTrigger>
+              <button
+              >
+                <span>
+                  <Lyrics />
+                </span>
+              </button>
+
+            </TooltipTrigger>
+            <TooltipContent className="bg-gray-900">
+              Lyrics
+            </TooltipContent>
+          </Tooltip>
+        </TooltipProvider>
+
+        <TooltipProvider delayDuration={300}>
+          <Tooltip>
+            <TooltipTrigger>
+              <button
+              >
+                <span>
+                  <Queue />
+                </span>
+              </button>
+
+            </TooltipTrigger>
+            <TooltipContent className="bg-gray-900">
+              Queue
+            </TooltipContent>
+          </Tooltip>
+        </TooltipProvider>
+
         <VolumeControl />
       </div>
 
