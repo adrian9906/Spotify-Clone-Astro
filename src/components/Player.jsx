@@ -281,6 +281,7 @@ export function Player() {
     usePlayerStore((state) => state);
   const audioRef = useRef(null);
   const volumeRef = useRef(null);
+  const [isActivateRandom, setActivateRandom] = useState(false)
 
   const { isOpen, setIsOpen } = useMenuStore((state) => state);
 
@@ -330,10 +331,18 @@ export function Player() {
 
   function handleNext() {
     const { song, playlist, songs } = currentMusic;
-
+    let nextSong = null
     const index = songs.findIndex((s) => s.id === song.id);
-
-    const nextSong = songs[index + 1];
+    if(isActivateRandom){
+      let indexRandom = Math.floor(Math.random() * (songs.length))
+      while (indexRandom === index) {
+        indexRandom = Math.floor(Math.random() * (songs.length))
+      }
+      console.log(indexRandom)
+      nextSong = songs[indexRandom + 1];
+    }else{
+      nextSong = songs[index + 1]
+    }
 
     if (nextSong) {
       const src = `/music/${playlist.id}/0${nextSong.id}.mp3`;
@@ -357,7 +366,8 @@ export function Player() {
               <Tooltip>
                 <TooltipTrigger>
                   <button
-                    className="text-[#b3b3b3] hover:text-white"
+                    className={`${isActivateRandom? "text-green-500" : "text-[#b3b3b3] hover:text-white"}`}
+                    onClick={()=>setActivateRandom(!isActivateRandom)}
                   >
                     <Random />
                   </button>
