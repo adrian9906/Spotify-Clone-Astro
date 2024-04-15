@@ -165,7 +165,7 @@ function CurrentSong({ image, title, artists, albumId }) {
   return (
     <div className="flex items-center gap-5 relative overflow-hidden">
       <picture className="w-[3.8rem] h-[3.8rem] bg-zinc-900 rounded-md shadow-lg overflow-hidden">
-        <img src={image} alt={title} />
+        <img className="w-full h-full" src={image} alt={title} />
       </picture>
 
       <div className="flex flex-col">
