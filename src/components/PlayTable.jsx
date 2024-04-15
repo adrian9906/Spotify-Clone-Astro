@@ -1,6 +1,6 @@
 import React from 'react'
-import { Pause, Play } from "./Player";
 import { usePlayerStore } from "@/store/playerStore";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "./ToolTip";
 
 export const PlaySongTable = ()=>(
     <svg 
@@ -28,7 +28,7 @@ export const PauseSongTable = ()=>(
 )
 
 
-const PlayTable = ({id, idSong}) => {
+const PlayTable = ({id, idSong, songName}) => {
     const { currentMusic, isPlaying, setIsPlaying, setCurrentMusic } =
     usePlayerStore((state) => state);
   const isPlayingPlaylist = isPlaying && currentMusic?.playlist.id === id;
@@ -51,9 +51,28 @@ const PlayTable = ({id, idSong}) => {
     return (
         <button onClick={handleClick} className="play-button">
             {isPlayingPlaylist ? (
-        <PauseSongTable />
+         <TooltipProvider delayDuration={300}>
+          <Tooltip>
+            <TooltipTrigger>
+            <PauseSongTable />
+            </TooltipTrigger>
+            <TooltipContent className="bg-gray-900">
+              Pausa
+            </TooltipContent>
+          </Tooltip>
+        </TooltipProvider>
+       
       ) : (
-        <PlaySongTable />
+        <TooltipProvider delayDuration={300}>
+          <Tooltip>
+            <TooltipTrigger>
+            <PlaySongTable />
+            </TooltipTrigger>
+            <TooltipContent className="bg-gray-900">
+            Reproducir {songName}
+            </TooltipContent>
+          </Tooltip>
+        </TooltipProvider>
       )}
         </button>
     )

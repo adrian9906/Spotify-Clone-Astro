@@ -45,7 +45,7 @@ const TablaConBotonPlay: React.FC<Props> = ({ songs, playlist }) => {
             
             <td className="px-4 py-2 rounded-tl-lg rounded-bl-lg w-5">
               {isBoton === index ? (
-                <PlayTable id={playlist?.id} idSong={song.id}/>
+                <PlayTable id={playlist?.id} idSong={song.id} songName={song.title}/>
               ):(index + 1) }
               </td>
             <td className="px-4 py-2 flex gap-3">

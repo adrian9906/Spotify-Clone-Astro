@@ -283,8 +283,9 @@ export function Player() {
   const volumeRef = useRef(null);
   const [isActivateRandom, setActivateRandom] = useState(false)
 
-  const { isOpen, setIsOpen } = useMenuStore((state) => state);
+  const { isOpen,isOpenQueue ,setOpenQueue, setIsOpen } = useMenuStore((state) => state);
 
+  console.log(isOpenQueue)
   useEffect(
     function () {
       isPlaying ? audioRef.current.play() : audioRef.current.pause();
@@ -489,7 +490,9 @@ export function Player() {
           <Tooltip>
             <TooltipTrigger>
               <button
-              >
+              onClick={() => setOpenQueue(!isOpenQueue)}
+              className={`transition-all hover:scale-105 ${isOpenQueue ? "text-green-500" : "text-[#b3b3b3] hover:text-white"
+                }`}>
                 <span>
                   <Queue />
                 </span>

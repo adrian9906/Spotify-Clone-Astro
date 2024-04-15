@@ -4,6 +4,7 @@ import AsideMenu from "../components/AsideMenu.astro";
 import { ViewTransitions } from "astro:transitions";
 import GridLayout from "../components/GridLayout";
 import PlayingMenu from "../components/PlayingMenu";
+import QueueMenu from "../components/QueueMenu";
 import NavegationComponent from "@/components/Navigation";
 
 interface Props {
@@ -53,6 +54,7 @@ const { title } = Astro.props;
 
       <div class="[grid-area:menu] rounded-lg overflow-y-auto bg-zinc-900">
         <PlayingMenu client:load />
+        <QueueMenu client:load />
       </div>
 
       <footer class="[grid-area:player] h-[70px] flex items-center">
