@@ -28,10 +28,10 @@ export const PauseSongTable = ()=>(
 )
 
 
-const PlayTable = ({id, idSong, songName}) => {
-    const { currentMusic, isPlaying, setIsPlaying, setCurrentMusic } =
+const PlayTable = ({id, idSong, songName, index}) => {
+    const { currentMusic, isPlaying, setIsPlaying, setCurrentMusic, setCurrentPlayingIndex, currentPlayingIndex } =
     usePlayerStore((state) => state);
-  const isPlayingPlaylist = isPlaying && currentMusic?.playlist.id === id;
+  const isPlayingPlaylist = isPlaying && currentMusic?.playlist.id === id && currentPlayingIndex === index;
 
   function handleClick() {
     if (isPlayingPlaylist) {
@@ -46,11 +46,12 @@ const PlayTable = ({id, idSong, songName}) => {
 
         setIsPlaying(true);
         setCurrentMusic({ songs, playlist, song: songs[idSong-1] });
+        setCurrentPlayingIndex(index);
       });
   }
     return (
         <button onClick={handleClick} className="play-button">
-            {isPlayingPlaylist ? (
+            {isPlayingPlaylist && currentPlayingIndex === index ? (
          <TooltipProvider delayDuration={300}>
           <Tooltip>
             <TooltipTrigger>

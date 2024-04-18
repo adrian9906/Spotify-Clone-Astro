@@ -25,9 +25,10 @@ export const Time2 = () =>(
 )
 
 const TablaConBotonPlay: React.FC<Props> = ({ songs, playlist }) => {
-  const { isPlaying } =
+  const { isPlaying, currentPlayingIndex } =
   usePlayerStore((state) => state);
   const [isBoton, setBoton] = useState<number | null>(null);
+  
 
  return (
     <table className="table-auto text-left min-w-full divide-y divide-gray-500/20">
@@ -41,11 +42,11 @@ const TablaConBotonPlay: React.FC<Props> = ({ songs, playlist }) => {
       </thead>
       <tbody>
       {songs.map((song, index) => (
-          <tr  key={index} onMouseEnter={() => setBoton(index)} onMouseLeave={() => setBoton(null)} className={`rounded-lg overflow-hidden transition duration-300 text-sm font-light ${isPlaying ? "text-green-500": "text-gray-300 hover:bg-white/10"}`}>
+          <tr  key={index} onMouseEnter={() => setBoton(index)} onMouseLeave={() => setBoton(null)} className={`rounded-lg overflow-hidden transition duration-300 text-sm font-light ${isPlaying && currentPlayingIndex === index ? "text-green-500": "text-gray-300 hover:bg-white/10"}`}>
             
             <td className="px-4 py-2 rounded-tl-lg rounded-bl-lg w-5">
               {isBoton === index ? (
-                <PlayTable id={playlist?.id} idSong={song.id} songName={song.title}/>
+                <PlayTable key={index} index={index} id={playlist?.id} idSong={song.id} songName={song.title}/>
               ):(index + 1) }
               </td>
             <td className="px-4 py-2 flex gap-3">
